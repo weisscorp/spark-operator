@@ -13234,6 +13234,10 @@
             "type": "integer",
             "format": "int64"
           },
+          "retryIntervalMethod": {
+            "description": "RetryIntervalMethod specifies how retry interval should be calculated. Supported values are: - linear: retry interval is multiplied by number of attempts (linear backoff). - static: retry interval is always constant.",
+            "type": "string"
+          },
           "type": {
             "description": "Type specifies the RestartPolicyType.",
             "type": "string"
