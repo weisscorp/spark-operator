@@ -1816,6 +1816,13 @@ func schema_spark_operator_v2_api_v1beta2_RestartPolicy(ref common.ReferenceCall
 							Format:      "",
 						},
 					},
+					"retryIntervalMethod": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RetryIntervalMethod specifies how retry interval should be calculated. Supported values are: - linear: retry interval is multiplied by number of attempts (linear backoff). - static: retry interval is always constant.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"onSubmissionFailureRetries": {
 						SchemaProps: spec.SchemaProps{
 							Description: "OnSubmissionFailureRetries is the number of times to retry submitting an application before giving up. This is best effort and actual retry attempts can be >= the value specified due to caching. These are required if RestartPolicy is OnFailure.",
