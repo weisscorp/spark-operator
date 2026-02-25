@@ -1379,6 +1379,7 @@ func (r *Reconciler) resetSparkApplicationStatus(app *v1beta2.SparkApplication) 
 		status.SparkApplicationID = ""
 		status.SubmissionAttempts = 0
 		status.LastSubmissionAttemptTime = metav1.Time{}
+		status.TerminationTime = metav1.Time{}
 		status.DriverInfo = v1beta2.DriverInfo{}
 		status.AppState.ErrorMessage = ""
 		status.ExecutorState = nil
