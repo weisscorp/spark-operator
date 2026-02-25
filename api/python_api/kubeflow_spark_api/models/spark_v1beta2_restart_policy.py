@@ -30,9 +30,10 @@ class SparkV1beta2RestartPolicy(BaseModel):
     on_failure_retry_interval: Optional[StrictInt] = Field(default=None, description="OnFailureRetryInterval is the interval in seconds between retries on failed runs.", alias="onFailureRetryInterval")
     on_submission_failure_retries: Optional[StrictInt] = Field(default=None, description="OnSubmissionFailureRetries is the number of times to retry submitting an application before giving up. This is best effort and actual retry attempts can be >= the value specified due to caching. These are required if RestartPolicy is OnFailure.", alias="onSubmissionFailureRetries")
     on_submission_failure_retry_interval: Optional[StrictInt] = Field(default=None, description="OnSubmissionFailureRetryInterval is the interval in seconds between retries on failed submissions.", alias="onSubmissionFailureRetryInterval")
+    retry_interval: Optional[StrictInt] = Field(default=None, description="RetryInterval is the interval in seconds between retries. If set, it takes precedence over OnFailureRetryInterval and OnSubmissionFailureRetryInterval.", alias="retryInterval")
     retry_interval_method: Optional[StrictStr] = Field(default=None, description="RetryIntervalMethod specifies how retry interval should be calculated. Supported values are: - linear: retry interval is multiplied by number of attempts (linear backoff). - static: retry interval is always constant.", alias="retryIntervalMethod")
     type: Optional[StrictStr] = Field(default=None, description="Type specifies the RestartPolicyType.")
-    __properties: ClassVar[List[str]] = ["onFailureRetries", "onFailureRetryInterval", "onSubmissionFailureRetries", "onSubmissionFailureRetryInterval", "retryIntervalMethod", "type"]
+    __properties: ClassVar[List[str]] = ["onFailureRetries", "onFailureRetryInterval", "onSubmissionFailureRetries", "onSubmissionFailureRetryInterval", "retryInterval", "retryIntervalMethod", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,9 +90,9 @@ class SparkV1beta2RestartPolicy(BaseModel):
             "onFailureRetryInterval": obj.get("onFailureRetryInterval"),
             "onSubmissionFailureRetries": obj.get("onSubmissionFailureRetries"),
             "onSubmissionFailureRetryInterval": obj.get("onSubmissionFailureRetryInterval"),
+            "retryInterval": obj.get("retryInterval"),
             "retryIntervalMethod": obj.get("retryIntervalMethod"),
             "type": obj.get("type")
         })
         return _obj
-
 
