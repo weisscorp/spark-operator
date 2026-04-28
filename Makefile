@@ -123,7 +123,7 @@ verify-codegen: $(LOCALBIN) ## Install code-generator commands and verify change
 	$(call go-install-tool,$(LOCALBIN)/client-gen-$(CODE_GENERATOR_VERSION),k8s.io/code-generator/cmd/client-gen,$(CODE_GENERATOR_VERSION))
 	$(call go-install-tool,$(LOCALBIN)/lister-gen-$(CODE_GENERATOR_VERSION),k8s.io/code-generator/cmd/lister-gen,$(CODE_GENERATOR_VERSION))
 	$(call go-install-tool,$(LOCALBIN)/informer-gen-$(CODE_GENERATOR_VERSION),k8s.io/code-generator/cmd/informer-gen,$(CODE_GENERATOR_VERSION))
-	./hack/verify-codegen.sh
+	CODE_GENERATOR_VERSION=$(CODE_GENERATOR_VERSION) ./hack/verify-codegen.sh
 
 .PHONY: python-api
 python-api: manifests ## Generate Python APIs from CRDs.

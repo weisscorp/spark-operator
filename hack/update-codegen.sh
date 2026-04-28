@@ -22,6 +22,10 @@ GO_CMD=${1:-go}
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 SCRIPT_ROOT="${SCRIPT_DIR}/.."
 CODEGEN_PKG="$($GO_CMD list -m -mod=readonly -f "{{.Dir}}" k8s.io/code-generator)"
+if [[ -z "${CODEGEN_PKG}" ]]; then
+    CODEGEN_VERSION="${CODE_GENERATOR_VERSION:-$($GO_CMD list -m -mod=readonly -f "{{.Version}}" k8s.io/code-generator)}"
+    CODEGEN_PKG="$($GO_CMD env GOMODCACHE)/k8s.io/code-generator@${CODEGEN_VERSION}"
+fi
 SPARK_OPERATOR_PKG="github.com/kubeflow/spark-operator/v2"
 
 source "${CODEGEN_PKG}/kube_codegen.sh"
