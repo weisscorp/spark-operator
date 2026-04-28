@@ -61,7 +61,7 @@ GEN_CRD_API_REFERENCE_DOCS_VERSION ?= v0.3.0
 HELM_VERSION ?= $(shell grep -e '^	helm.sh/helm/v3 v' go.mod | cut -d ' ' -f 2)
 HELM_UNITTEST_VERSION ?= 0.8.2
 HELM_DOCS_VERSION ?= v1.14.2
-CODE_GENERATOR_VERSION ?= v0.33.1
+CODE_GENERATOR_VERSION ?= v0.32.5
 
 ## Binaries
 SPARK_OPERATOR ?= $(LOCALBIN)/spark-operator
