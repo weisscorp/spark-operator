@@ -225,9 +225,9 @@ var _ = Describe("IsDriverRunning", func() {
 })
 
 var _ = Describe("TimeUntilNextRetryDue", func() {
-	assertDurationBetween := func(actual, min, max time.Duration) {
-		Expect(actual).To(BeNumerically(">=", min))
-		Expect(actual).To(BeNumerically("<=", max))
+	assertDurationBetween := func(actual, lower, upper time.Duration) {
+		Expect(actual).To(BeNumerically(">=", lower))
+		Expect(actual).To(BeNumerically("<=", upper))
 	}
 
 	Context("SparkApplication with linear retry interval method", func() {
